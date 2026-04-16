@@ -2,7 +2,7 @@
 
 > Full-stack ML-powered forecasting platform for time-series predictions with automated insights
 
-[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.14-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104-green.svg)](https://fastapi.tiangolo.com/)
 [![React](https://img.shields.io/badge/React-18-61dafb.svg)](https://reactjs.org/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green.svg)](https://www.mongodb.com/)
@@ -12,7 +12,9 @@
 
 ForecastIQ is a production-ready forecasting platform that transforms historical sales data into actionable predictions using machine learning. Upload CSV files, run pre-trained models, compare performance, and get AI-generated business insights—all through a beautiful, intuitive interface.
 
-**Live Demo:** Coming soon (Deploy using DEPLOYMENT.md)
+**Live Demo:** [https://forecast-iq-theta.vercel.app](https://forecast-iq-theta.vercel.app)
+
+**Backend API:** [https://forecastiq-backend.onrender.com](https://forecastiq-backend.onrender.com)
 
 ## ✨ Key Features
 
@@ -101,7 +103,7 @@ ForecastIQ is a production-ready forecasting platform that transforms historical
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.11+
+- Python 3.14+ (or 3.11+)
 - Node.js 18+
 - MongoDB Atlas account (free tier)
 
@@ -520,8 +522,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🐛 Known Issues
 
 - Free tier backend sleeps after 15 min inactivity (Render limitation)
-- First request after sleep takes ~30 seconds
-- Scikit-learn version mismatch warning (non-critical)
+- First request after sleep takes ~30 seconds to wake up
+- Scikit-learn version mismatch warning (models trained with 1.6.1, running with 1.8.0) - non-critical
 
 ## 💡 Tips
 
