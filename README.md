@@ -311,40 +311,21 @@ python train_models.py
 ### Backend Tests
 ```bash
 cd backend
-
-# Test API endpoints
-python test_api.py
-
-# Test preprocessing
-python test_preprocessor.py
-
-# Test compare endpoint
-python test_compare.py
-
-# Verify models
-python check_models.py
+python test_api.py          # Test API endpoints
+python test_preprocessor.py # Test data preprocessing
 ```
 
-### Frontend Tests
+### Train ML Models
 ```bash
-cd frontend
-
-# Build test
-npm run build
-
-# Preview production build
-npm run preview
+pip install -r training_requirements.txt
+python train_models.py
 ```
 
-### Manual Testing Checklist
-- [ ] Sign up new user
-- [ ] Login with credentials
-- [ ] Upload CSV dataset
-- [ ] Run forecast (both models)
-- [ ] View insights
-- [ ] Compare forecasts
-- [ ] Check history
-- [ ] Logout
+### Manual Testing
+1. Sign up at https://forecast-iq-theta.vercel.app
+2. Upload CSV (use sample_sales_data.csv)
+3. Run forecast with both models
+4. View insights and compare results
 
 ## 🌐 API Endpoints
 
@@ -374,46 +355,50 @@ npm run preview
 
 ## 🚀 Deployment
 
-### Free Deployment (Total Cost: $0/month)
+### Live Application
 
-1. **Backend → Render.com**
-   - Python web service
-   - Auto-deploy from GitHub
-   - Free 750 hours/month
+**Frontend:** https://forecast-iq-theta.vercel.app  
+**Backend API:** https://forecastiq-backend.onrender.com  
+**API Docs:** https://forecastiq-backend.onrender.com/docs
 
-2. **Frontend → Vercel**
-   - Automatic builds
-   - CDN distribution
-   - Unlimited bandwidth
+### Environment Variables
 
-3. **Database → MongoDB Atlas**
-   - Free M0 cluster
-   - 512 MB storage
-   - Shared resources
+#### Backend (Render)
+Set these in Render Dashboard → Environment:
 
-**Detailed Guide:** See `DEPLOYMENT.md`
-
-### Quick Deploy
-
-```bash
-# 1. Push to GitHub
-git add .
-git commit -m "Ready for deployment"
-git push origin main
-
-# 2. Deploy Backend (Render)
-# - Connect GitHub repo
-# - Set environment variables
-# - Deploy
-
-# 3. Deploy Frontend (Vercel)
-# - Import GitHub repo
-# - Set VITE_API_URL
-# - Deploy
-
-# 4. Update CORS in backend/main.py
-# Add your Vercel URL to allow_origins
+```env
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/
+MONGO_DB_NAME=forecastiq
+SECRET_KEY=your-super-secret-key-min-32-characters
+ENVIRONMENT=production
 ```
+
+#### Frontend (Vercel)
+The frontend auto-detects production environment. No manual setup needed.
+
+### Deployment Steps
+
+1. **Push to GitHub**
+   ```bash
+   git add .
+   git commit -m "Update"
+   git push origin main
+   ```
+
+2. **Backend (Render)**
+   - Connect GitHub repo
+   - Set environment variables
+   - Auto-deploys on push
+
+3. **Frontend (Vercel)**
+   - Import GitHub repo
+   - Auto-deploys on push
+
+### Free Hosting (Total Cost: $0/month)
+
+- **Backend:** Render.com (free tier)
+- **Frontend:** Vercel (free tier)
+- **Database:** MongoDB Atlas (free M0 cluster)
 
 ## 📈 Performance
 
@@ -478,10 +463,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📚 Documentation
 
-- **DEPLOYMENT.md** - Complete deployment guide
-- **PROJECT_STEPS.md** - Step-by-step implementation
-- **VISUAL_GUIDE.md** - Visual documentation
-- **TRAIN_MODELS_GUIDE.md** - ML model training
+- **README.md** - Complete project overview (this file)
 - **backend/API_GUIDE.md** - API documentation
 - **backend/MONGODB_SCHEMA.md** - Database schema
 
@@ -521,9 +503,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🐛 Known Issues
 
-- Free tier backend sleeps after 15 min inactivity (Render limitation)
-- First request after sleep takes ~30 seconds to wake up
-- Scikit-learn version mismatch warning (models trained with 1.6.1, running with 1.8.0) - non-critical
+- Free tier backend sleeps after 15 min inactivity (first request takes ~30s to wake)
+- Bcrypt 5.0.0 has issues with Python 3.14 (pinned to 4.x in requirements)
 
 ## 💡 Tips
 
@@ -531,7 +512,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Ensure CSV has date and numeric columns
 - Random Forest is more accurate but slower
 - 30-day forecast recommended for best results
-- Check browser console for debugging
 
 ---
 
