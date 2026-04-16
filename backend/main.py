@@ -29,16 +29,11 @@ app = FastAPI(title="ForecastIQ API", lifespan=lifespan)
 forecast_engine = None
 
 # CORS Configuration - Allow frontend to access backend
+# Temporarily allow all origins for testing, then restrict to specific domains
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://localhost:5174",
-        "http://127.0.0.1:5173",
-        "http://127.0.0.1:5174",
-        "https://forecast-iq-theta.vercel.app"
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],  # Allow all origins temporarily
+    allow_credentials=False,  # Must be False when using allow_origins=["*"]
     allow_methods=["*"],
     allow_headers=["*"],
     expose_headers=["*"]
