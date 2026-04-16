@@ -1,0 +1,5 @@
+# Root requirements.txt for Render deployment
+# This file redirects to backend/requirements.txt
+
+# Install from backend directory
+-r backend/requirements.txt
