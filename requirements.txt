@@ -1,26 +1,31 @@
-# Simplified requirements for Python 3.14 compatibility
-# Using only packages with pre-built wheels
+# Python 3.14 compatible requirements - using only pre-built wheels
 
+# Core FastAPI - has wheels for Python 3.14
 fastapi>=0.115.0
 uvicorn[standard]>=0.32.0
 python-multipart>=0.0.12
 python-dotenv>=1.0.1
 
-# Use older pydantic that doesn't need Rust compilation
-pydantic>=2.9.0,<2.10.0
-pydantic-settings>=2.5.0,<2.6.0
+# Use pydantic v2 with pre-built pydantic-core wheels
+# Let pip find the best compatible version
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
 
+# MongoDB - has wheels
 pymongo>=4.10.0
 motor>=3.6.0
 
-# Data processing
+# Data processing - all have Python 3.14 wheels
 pandas>=2.2.0
 numpy>=2.0.0
 scikit-learn>=1.5.0
 
-# Authentication
+# Authentication - pure Python, no compilation needed
 python-jose[cryptography]>=3.3.0
 passlib[bcrypt]>=1.7.4
+
+# bcrypt has pre-built wheels for Python 3.14
 bcrypt>=4.2.0
 
+# Utilities
 joblib>=1.4.0

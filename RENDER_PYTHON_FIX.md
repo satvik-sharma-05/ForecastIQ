@@ -69,25 +69,4 @@ git push
 1. **Push changes:**
    ```bash
    git add .
-   git commit -m "Fix: Add render.yaml and flexible package versions"
-   git push
-   ```
-
-2. **Set Python version in Render:**
-   - Dashboard → Settings → Environment Variables
-   - Add: `PYTHON_VERSION` = `3.11.9`
-   - Save
-
-3. **Redeploy:**
-   - Manual Deploy → Deploy latest commit
-
-## ✅ Verification
-
-After deployment:
-1. Check logs for: `Using Python version 3.11.9`
-2. Build should complete in ~2 minutes
-3. Visit: https://forecastiq-backend.onrender.com/docs
-
----
-
-**This will fix the slow build issue!** 🎉
+   git
